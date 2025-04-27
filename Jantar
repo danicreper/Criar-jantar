@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha o Jantar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha o Jantar!</h1>
+        <form id="dinnerForm">
+            <label>
+                <input type="radio" name="dinner" value="Alho Francês à Brás">
+                Alho Francês à Brás
+            </label>
+            <label>
+                <input type="radio" name="dinner" value="Bifes de Frango com Natas">
+                Bifes de Frango com Natas
+            </label>
+            <label>
+                <input type="radio" name="dinner" value="Bifinhos no Forno com Bacon">
+                Bifinhos no Forno com Bacon
+            </label>
+            <label>
+                <input type="radio" name="dinner" value="Esparguete à Bolonhesa">
+                Esparguete à Bolonhesa
+            </label>
+            <button type="submit">Escolher Jantar</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('dinnerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const selectedDinner = formData.get('dinner');
+            
+            if (selectedDinner) {
+                document.getElementById('result').textContent = `Você escolheu: ${selectedDinner}!`;
+            } else {
+                document.getElementById('result').textContent = 'Por favor, escolha uma opção antes de enviar.';
+            }
+        });
+    </script>
+</body>
+</html>
